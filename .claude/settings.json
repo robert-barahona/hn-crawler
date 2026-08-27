@@ -1,0 +1,29 @@
+{
+	"hooks": {
+		"PostToolUse": [
+			{
+				"matcher": "Write|Edit",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "output=$(pnpm run lint-and-format:fix 2>&1) || { echo \"$output\" >&2; exit 2; }",
+						"timeout": 30,
+						"statusMessage": "Fixing lint and format with biome..."
+					},
+					{
+						"type": "command",
+						"command": "output=$(pnpm run ts:check 2>&1) || { echo \"$output\" >&2; exit 2; }",
+						"timeout": 60,
+						"statusMessage": "Checking TypeScript..."
+					},
+					{
+						"type": "command",
+						"command": "output=$(pnpm run knip 2>&1) || { echo \"$output\" >&2; exit 2; }",
+						"timeout": 30,
+						"statusMessage": "Checking for unused code with knip..."
+					}
+				]
+			}
+		]
+	}
+}

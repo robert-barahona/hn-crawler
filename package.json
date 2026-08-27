@@ -2,6 +2,10 @@
 	"name": "hn-crawler",
 	"version": "0.1.0",
 	"private": true,
+	"engines": {
+		"node": ">=22.13.0",
+		"pnpm": ">=11"
+	},
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
@@ -19,12 +23,12 @@
 	"devDependencies": {
 		"@biomejs/biome": "2.5.2",
 		"@tailwindcss/postcss": "^4",
-		"@types/node": "^20",
+		"@types/node": "^24.13.3",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
 		"knip": "^6.32.2",
 		"tailwindcss": "^4",
 		"typescript": "^5"
 	},
-	"packageManager": "pnpm@11.13.0"
+	"packageManager": "pnpm@11.24.0"
 }

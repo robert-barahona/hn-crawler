@@ -1,5 +1,15 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Requirements
+
+- **Node.js >= 22.13.0** (recommended: the version in [`.nvmrc`](.nvmrc) — `nvm use` / `fnm use`)
+- **pnpm 11.24.0** — no need to install it by hand: run `corepack enable` and it is
+  provisioned automatically from the `packageManager` field in `package.json`
+
+The Node floor is set by pnpm 11 (`>=22.13`), which is stricter than Next 16 (`>=20.9`).
+It is enforced by the `engines` field in `package.json` plus `engineStrict: true`,
+so `pnpm install` fails fast with a clear message on an unsupported Node version.
+
 ## Getting Started
 
 First, run the development server:

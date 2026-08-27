@@ -1,7 +1,8 @@
 const config = {
-  plugins: {
-    "@tailwindcss/postcss": {},
-  },
-};
+	plugins: {
+		"@tailwindcss/postcss": {},
+	},
+}
 
-export default config;
+// biome-ignore lint/style/noDefaultExport: needed
+export default config

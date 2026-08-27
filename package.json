@@ -13,9 +13,12 @@
 		"lint-and-format:check": "biome check",
 		"lint-and-format:fix": "biome check --write",
 		"ts:check": "tsc --noEmit",
-		"knip": "knip"
+		"knip": "knip",
+		"test": "vitest run",
+		"test:watch": "vitest"
 	},
 	"dependencies": {
+		"better-sqlite3": "^13.0.3",
 		"next": "16.3.3",
 		"react": "19.2.8",
 		"react-dom": "19.2.8"
@@ -23,12 +26,14 @@
 	"devDependencies": {
 		"@biomejs/biome": "2.5.2",
 		"@tailwindcss/postcss": "^4",
+		"@types/better-sqlite3": "^9.6.0",
 		"@types/node": "^24.13.3",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
 		"knip": "^6.32.2",
 		"tailwindcss": "^4",
-		"typescript": "^5"
+		"typescript": "^5",
+		"vitest": "^4.1.11"
 	},
 	"packageManager": "pnpm@11.24.0"
 }

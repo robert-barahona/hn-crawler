@@ -16,6 +16,8 @@ jobs:
         include:
           - name: Linting and Formatting
             run: pnpm lint-and-format:check
+          - name: Tests
+            run: pnpm test
           - name: Typescript
             run: pnpm ts:check
           - name: Knip

@@ -1,20 +1,29 @@
 import { mkdirSync } from "node:fs"
 import { dirname } from "node:path"
 import Database from "better-sqlite3"
+import { FILTER_TYPES } from "@/lib/filters/filterTypes"
 
 const IN_MEMORY_DATABASE = ":memory:"
 const DATABASE_PATH = "./data/hn-crawler.db"
+
+// Only the storage layer names these two, so they stay here until something else needs them
+const OPERATIONS = ["crawl", "filter"] as const
+const STATUSES = ["success", "error"] as const
+
+// Every value passed here is a compile-time constant, never runtime input
+const sqlValueList = (values: readonly string[]): string =>
+	values.map((value) => `'${value}'`).join(", ")
 
 // Schema is plain SQL and safe to re-run on every connection — simple enough for one table
 const SCHEMA_SQL = `
 	CREATE TABLE IF NOT EXISTS usage_logs (
 		id            INTEGER PRIMARY KEY AUTOINCREMENT,
 		created_at    TEXT    NOT NULL,
-		operation     TEXT    NOT NULL CHECK (operation IN ('crawl', 'filter')),
-		filter_type   TEXT    CHECK (filter_type IN ('more-than-five-words-by-comments', 'five-words-or-fewer-by-points')),
+		operation     TEXT    NOT NULL CHECK (operation IN (${sqlValueList(OPERATIONS)})),
+		filter_type   TEXT    CHECK (filter_type IN (${sqlValueList(FILTER_TYPES)})),
 		entry_count   INTEGER NOT NULL,
 		duration_ms   INTEGER NOT NULL,
-		status        TEXT    NOT NULL CHECK (status IN ('success', 'error')),
+		status        TEXT    NOT NULL CHECK (status IN (${sqlValueList(STATUSES)})),
 		error_message TEXT,
 
 		-- A filter run always names its filter type; a crawl never does.

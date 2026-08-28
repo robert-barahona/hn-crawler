@@ -91,6 +91,15 @@ describe("createConnection", () => {
 		expect(countLogs(db)).toBe(2)
 	})
 
+	it("accepts a failed run that explains itself", () => {
+		insertLog(db, {
+			status: "error",
+			errorMessage: "https://news.ycombinator.com/ responded with 503.",
+		})
+
+		expect(countLogs(db)).toBe(1)
+	})
+
 	it("rejects an unknown operation", () => {
 		expect(() => insertLog(db, { operation: "purge" })).toThrow(
 			/CHECK constraint failed/,

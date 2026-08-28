@@ -2,13 +2,10 @@ import { mkdirSync } from "node:fs"
 import { dirname } from "node:path"
 import Database from "better-sqlite3"
 import { FILTER_TYPES } from "@/lib/types/filterTypes"
+import { OPERATIONS, STATUSES } from "@/lib/types/usageTypes"
 
 const IN_MEMORY_DATABASE = ":memory:"
 const DATABASE_PATH = "./data/hn-crawler.db"
-
-// Only the storage layer names these two, so they stay here until something else needs them
-const OPERATIONS = ["crawl", "filter"] as const
-const STATUSES = ["success", "error"] as const
 
 // Every value passed here is a compile-time constant, never runtime input
 const sqlValueList = (values: readonly string[]): string =>

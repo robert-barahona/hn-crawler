@@ -26,12 +26,12 @@ filtering that data in two different ways. Built with Next.js, TypeScript, and S
 - Automated testing of the filtering and crawling operations
 - Clear README explaining design decisions
 
-## Architecture
+## Business Logic Architecture
 - Pure business logic in `/lib`, with no dependency on Next.js
 - `/lib/crawler`: fetch + HTML parsing for HN (using cheerio)
 - `/lib/filters`: filtering and sorting logic
 - `/lib/storage`: better-sqlite3 connection + usage log repository (raw SQL, no ORM)
-- `/lib/types.ts`: shared interfaces
+- `/lib/types`: all shared and feature-specific types (e.g. `crawlerTypes.ts`, `filterTypes.ts`).
 - `/app/api` is only a thin orchestration layer, no business logic
 
 ## Stack
@@ -52,15 +52,15 @@ filtering that data in two different ways. Built with Next.js, TypeScript, and S
 
 - Always use arrow functions, never `function` declarations, expressions, or object method shorthand — utilities, hooks, event handlers, API route handlers, object literal callbacks (e.g. `ReadableStream({ start: async (controller) => {...} })`), etc.
 
-## Project Structure
+## Frontend Structure
 
-- `src/components/ui`: base, reusable components with no business logic (Button, Input, Card, Badge, Modal).
-- `src/components/layout`: structural wrappers with no domain content (Header, Footer, Sidebar, PageWrapper, Grid). If a structural component has domain-specific content or logic, it belongs in `feature/<name>` instead.
-- `src/components/feature/<name>`: components tied to a domain/feature, including page-specific components (CrawlerResults, FilterTabs, UsageStats). Example: for `/app/page.tsx`, create `/components/feature/crawler/CrawlerResults.tsx`.
-- `src/hooks/shared`: generic, reusable hooks with no business logic (useDebounce, useLocalStorage, useMediaQuery).
-- `src/hooks/feature/<name>`: hooks tied to a domain/feature (useCrawl, useFilter).
-- `src/types`: all shared and feature-specific types (e.g. `crawlerTypes.ts`, `filterTypes.ts`).
-- `src/lib`, `src/utils`: framework-agnostic helpers and integrations. No subfolder split required unless a domain-specific group emerges — then mirror the `feature/<name>` pattern.
+- `/components/ui`: base, reusable components with no business logic (Button, Input, Card, Badge, Modal).
+- `/components/layout`: structural wrappers with no domain content (Header, Footer, Sidebar, PageWrapper, Grid). If a structural component has domain-specific content or logic, it belongs in `feature/<name>` instead.
+- `/components/feature/<name>`: components tied to a domain/feature, including page-specific components (CrawlerResults, FilterTabs, UsageStats). Example: for `/app/page.tsx`, create `/components/feature/crawler/CrawlerResults.tsx`.
+- `/hooks/shared`: generic, reusable hooks with no business logic (useDebounce, useLocalStorage, useMediaQuery).
+- `/hooks/feature/<name>`: hooks tied to a domain/feature (useCrawl, useFilter).
+- `/types`: all shared and feature-specific types (e.g. `crawlerTypes.ts`, `filterTypes.ts`).
+- `/utils`: framework-agnostic helpers and integrations. No subfolder split required unless a domain-specific group emerges — then mirror the `feature/<name>` pattern.
 - Naming: components in PascalCase matching their export (`CrawlerResults.tsx`); hooks in camelCase prefixed with `use` (`useCrawl.ts`).
 
 ## TypeScript

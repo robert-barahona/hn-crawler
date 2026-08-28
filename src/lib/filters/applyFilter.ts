@@ -1,6 +1,6 @@
 import { countTitleWords } from "@/lib/filters/countTitleWords"
-import type { FilterType } from "@/lib/filters/filterTypes"
-import type { HackerNewsEntry } from "@/lib/types"
+import type { HackerNewsEntry } from "@/lib/types/crawlerTypes"
+import type { FilterType } from "@/lib/types/filterTypes"
 
 const WORD_COUNT_THRESHOLD = 5
 

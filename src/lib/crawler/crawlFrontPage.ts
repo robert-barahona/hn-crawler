@@ -3,7 +3,7 @@ import {
 	unexpectedStatusError,
 } from "@/lib/crawler/CrawlerError"
 import { parseFrontPage } from "@/lib/crawler/parseFrontPage"
-import type { HackerNewsEntry } from "@/lib/types"
+import type { HackerNewsEntry } from "@/lib/types/crawlerTypes"
 
 const FRONT_PAGE_URL = "https://news.ycombinator.com/"
 const USER_AGENT = "hn-crawler/0.1 (technical exercise)" // Hacker News asks crawlers to identify themselves

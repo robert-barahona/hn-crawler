@@ -3,7 +3,7 @@ import { FRONT_PAGE_HTML } from "@/lib/crawler/frontPageFixture"
 import { parseFrontPage } from "@/lib/crawler/parseFrontPage"
 import { applyFilter } from "@/lib/filters/applyFilter"
 import { countTitleWords } from "@/lib/filters/countTitleWords"
-import type { HackerNewsEntry } from "@/lib/types"
+import type { HackerNewsEntry } from "@/lib/types/crawlerTypes"
 
 const ENTRIES = parseFrontPage(FRONT_PAGE_HTML)
 

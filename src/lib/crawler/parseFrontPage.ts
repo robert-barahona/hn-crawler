@@ -1,6 +1,6 @@
 import * as cheerio from "cheerio"
 import { markupError } from "@/lib/crawler/CrawlerError"
-import type { HackerNewsEntry } from "@/lib/types"
+import type { HackerNewsEntry } from "@/lib/types/crawlerTypes"
 import { normalizeWhitespace } from "@/utils/text"
 
 const MAX_ENTRIES = 30

@@ -1,7 +1,7 @@
 import { mkdirSync } from "node:fs"
 import { dirname } from "node:path"
 import Database from "better-sqlite3"
-import { FILTER_TYPES } from "@/lib/filters/filterTypes"
+import { FILTER_TYPES } from "@/lib/types/filterTypes"
 
 const IN_MEMORY_DATABASE = ":memory:"
 const DATABASE_PATH = "./data/hn-crawler.db"

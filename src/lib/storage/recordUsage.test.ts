@@ -1,9 +1,9 @@
 import type { Database } from "better-sqlite3"
 import { afterEach, beforeEach, describe, expect, it } from "vitest"
 import { createConnection } from "@/lib/storage/db"
+import { recordUsage } from "@/lib/storage/recordUsage"
 import { UsageRepository } from "@/lib/storage/UsageRepository"
 import type { HackerNewsEntry } from "@/lib/types/crawlerTypes"
-import { recordUsage } from "@/lib/usage/recordUsage"
 
 const buildEntry = (number: number): HackerNewsEntry => ({
 	number,

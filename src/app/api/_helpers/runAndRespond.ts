@@ -1,10 +1,10 @@
 import { jsonResponse } from "@/app/api/_helpers/jsonResponse"
 import { toErrorResponse } from "@/app/api/_helpers/toErrorResponse"
 import { getDb } from "@/lib/storage/db"
+import { recordUsage } from "@/lib/storage/recordUsage"
 import { UsageRepository } from "@/lib/storage/UsageRepository"
 import type { HackerNewsEntry } from "@/lib/types/crawlerTypes"
 import type { OperationDetail } from "@/lib/types/usageTypes"
-import { recordUsage } from "@/lib/usage/recordUsage"
 
 export const runAndRespond = async (
 	detail: OperationDetail,

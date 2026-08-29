@@ -10,6 +10,8 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
+		"db": "sqlite3 -box data/hn-crawler.db",
+		"db:last-five": "pnpm db \"SELECT * FROM usage_logs ORDER BY created_at DESC, id DESC LIMIT 5;\"",
 		"lint-and-format:check": "biome check",
 		"lint-and-format:fix": "biome check --write",
 		"ts:check": "tsc --noEmit",

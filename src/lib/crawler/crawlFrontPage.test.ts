@@ -2,10 +2,7 @@ import { afterEach, describe, expect, it, vi } from "vitest"
 import { CrawlerError } from "@/lib/crawler/CrawlerError"
 import { crawlFrontPage } from "@/lib/crawler/crawlFrontPage"
 import { FRONT_PAGE_HTML } from "@/lib/crawler/frontPageFixture"
-
-const stubFetch = (implementation: () => Promise<Response>): void => {
-	vi.stubGlobal("fetch", vi.fn(implementation))
-}
+import { stubFetch } from "@/test-helpers/stubFetch"
 
 describe("crawlFrontPage", () => {
 	afterEach(() => {

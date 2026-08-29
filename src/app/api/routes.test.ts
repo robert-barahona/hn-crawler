@@ -9,6 +9,7 @@ import { createConnection } from "@/lib/storage/db"
 import { UsageRepository } from "@/lib/storage/UsageRepository"
 import type { HackerNewsEntry } from "@/lib/types/crawlerTypes"
 import type { UsageLog } from "@/lib/types/usageTypes"
+import { stubFetch } from "@/test-helpers/stubFetch"
 
 // Routes call getDb() for the shared connection — this swaps that export for an in-memory one in tests
 const db: Database = createConnection(":memory:")
@@ -31,10 +32,6 @@ const filterRequest = (body: unknown): NextRequest =>
 const crawledEntries = (): HackerNewsEntry[] => parseFrontPage(FRONT_PAGE_HTML)
 
 // Replaces global `fetch` with the given answer, so no test reaches Hacker News for real
-const stubFetch = (implementation: () => Promise<Response>): void => {
-	vi.stubGlobal("fetch", vi.fn(implementation))
-}
-
 const answerWithFrontPage = (): void => {
 	stubFetch(async () => new Response(FRONT_PAGE_HTML, { status: 200 }))
 }

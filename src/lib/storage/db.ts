@@ -48,7 +48,6 @@ export const createConnection = (filename: string): Database.Database => {
 let connection: Database.Database | null = null
 
 // One shared connection for the app (better-sqlite3 is synchronous, so this is safe)
-/** @lintignore wired up by the API routes in a later phase */
 export const getDb = (): Database.Database => {
 	connection ??= createConnection(DATABASE_PATH)
 

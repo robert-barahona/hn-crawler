@@ -3,7 +3,8 @@ import { markupError } from "@/lib/crawler/CrawlerError"
 import type { HackerNewsEntry } from "@/lib/types/crawlerTypes"
 import { normalizeWhitespace } from "@/utils/text"
 
-const MAX_ENTRIES = 30
+// Also the ceiling the filter endpoint accepts: it filters a front page, not a list of any size
+export const MAX_ENTRIES = 30
 
 const ENTRY_NUMBER_PATTERN = /^(\d+)\.$/ // "13."
 const POINTS_PATTERN = /^(\d+) points?$/ // "258 points", "1 point"

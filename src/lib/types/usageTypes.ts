@@ -12,7 +12,7 @@ type WithOperation<O extends Operation> = { readonly operation: O }
 type WithStatus<S extends Status> = { readonly status: S }
 
 // A filter run names its filter type; a crawl has none to name
-type OperationDetail =
+export type OperationDetail =
 	| WithOperation<"crawl">
 	| (WithOperation<"filter"> & { readonly filterType: FilterType })
 
@@ -23,7 +23,7 @@ type StatusDetail =
 
 export type UsageLogInput = OperationDetail &
 	StatusDetail & {
-		readonly entryCount: number
+		readonly entryCount: number // how many entries the run produced
 		readonly durationMs: number
 	}
 

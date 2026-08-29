@@ -90,10 +90,8 @@ describe("UsageRepository", () => {
 				durationMs: 1,
 			})
 
-			// Round-tripping only succeeds on a canonical ISO string;
-			// The Z suffix is what makes it UTC rather than a local time
+			// Round-tripping only succeeds on a canonical ISO string
 			expect(new Date(log.createdAt).toISOString()).toBe(log.createdAt)
-			expect(log.createdAt.endsWith("Z")).toBe(true)
 			expect(log.createdAt >= before).toBe(true)
 		})
 

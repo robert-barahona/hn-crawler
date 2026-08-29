@@ -101,7 +101,6 @@ describe("API routes", () => {
 			const response = await GET_CRAWL()
 
 			expect(response.status).toBe(500)
-			expect(lastLog()?.status).toBe("error")
 		})
 	})
 

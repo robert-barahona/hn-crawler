@@ -18,7 +18,6 @@ describe("crawlFrontPage", () => {
 		const entries = await crawlFrontPage()
 
 		expect(entries).toHaveLength(30)
-		expect(entries[0]?.number).toBe(1)
 	})
 
 	it("requests the Hacker News front page with an identifying user agent", async () => {

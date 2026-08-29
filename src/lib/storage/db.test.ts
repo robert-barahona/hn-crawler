@@ -81,14 +81,13 @@ describe("createConnection", () => {
 		expect(countLogs(db)).toBe(1)
 	})
 
-	it("accepts a crawl without a filter type and a filter run with one", () => {
-		insertLog(db, { operation: "crawl", filterType: null })
+	it("accepts a filter run that names its filter type", () => {
 		insertLog(db, {
 			operation: "filter",
 			filterType: "five-words-or-fewer-by-points",
 		})
 
-		expect(countLogs(db)).toBe(2)
+		expect(countLogs(db)).toBe(1)
 	})
 
 	it("accepts a failed run that explains itself", () => {

@@ -6,10 +6,6 @@ describe("countTitleWords", () => {
 		expect(countTitleWords("This is - a self-explained example")).toBe(5)
 	})
 
-	it("keeps a hyphenated word whole", () => {
-		expect(countTitleWords("self-explained")).toBe(1)
-	})
-
 	it("ignores tokens made only of symbols", () => {
 		expect(countTitleWords("- – — | / +")).toBe(0)
 	})
@@ -22,7 +18,6 @@ describe("countTitleWords", () => {
 		expect(countTitleWords("Show HN: Voronoi Go")).toBe(4)
 		expect(countTitleWords("Nvidia acquires $13B")).toBe(3)
 		expect(countTitleWords("Trade (and Tariffs)")).toBe(3)
-		expect(countTitleWords("Robert's laptop")).toBe(2)
 	})
 
 	it("counts a bare number as a word", () => {

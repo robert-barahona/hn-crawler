@@ -29,7 +29,12 @@ export const useFilter = (crawled: HackerNewsEntry[]): FilterState => {
 		setError(null)
 		setFilterType(next)
 
+		// Nothing to ask for, and the run just abandoned above reports nothing when
+		// it ends, so clearing the flag here is what keeps the tabs from staying disabled
 		if (!next) {
+			inFlight.current = null
+			setIsFiltering(false)
+
 			return
 		}
 
@@ -50,7 +55,8 @@ export const useFilter = (crawled: HackerNewsEntry[]): FilterState => {
 
 			setFiltered(filteredEntries)
 		} catch (cause) {
-			// An abort means the component went away, so there is nobody to tell
+			// An aborted run reports nothing at all: whoever aborted it owns the
+			// flag, whether that was a newer pick, a cleared filter or an unmount
 			if (controller.signal.aborted) {
 				return
 			}

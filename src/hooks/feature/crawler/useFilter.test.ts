@@ -90,6 +90,27 @@ describe("useFilter", () => {
 		expect(fetch).toHaveBeenCalledTimes(1)
 	})
 
+	// Clearing abandons the run in flight, and an abandoned run reports nothing on
+	// its way out, so without the hook lowering the flag the tabs stay disabled for good
+	it("stops loading when the filter is cleared while a run is in flight", async () => {
+		const { signals } = stubFetch(untilAborted)
+
+		const { result } = renderHook(() => useFilter(CRAWLED))
+
+		await act(async () => {
+			void result.current.handleChangeFilter("five-words-or-fewer-by-points")
+		})
+		await act(async () => {
+			void result.current.handleChangeFilter(null)
+		})
+		await flush()
+
+		expect(signals()[0]?.aborted).toBe(true)
+		expect(result.current.isFiltering).toBe(false)
+		expect(result.current.entries).toBe(CRAWLED)
+		expect(result.current.error).toBeNull()
+	})
+
 	it("exposes the message the server wrote when the filter fails", async () => {
 		stubFetch(async () =>
 			Response.json({ error: "`type` must be one of: ..." }, { status: 400 }),

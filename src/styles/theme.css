@@ -1,0 +1,16 @@
+@theme {
+	--color-bg-primary: #2a2a28;
+	--color-surface-primary: #403f39;
+	--color-surface-secondary: #35342f;
+	--color-border: #55534b;
+	--color-text-primary: #f5f3ee;
+	--color-text-secondary: #b8b5ad;
+	--color-text-muted: #9c978c;
+
+	--color-accent: #7c4def;
+	--color-accent-hover: #8c61f0;
+	--color-accent-text: #ffffff;
+
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
+}

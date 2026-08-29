@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
-import "./globals.css"
+import "../styles/globals.css"
 import type { FC, PropsWithChildren } from "react"
 
 const geistSans = Geist({
@@ -24,7 +24,9 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => (
 		lang="en"
 		className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
 	>
-		<body className="flex min-h-full flex-col">{children}</body>
+		<body className="flex h-full flex-col bg-bg-primary text-text-primary">
+			{children}
+		</body>
 	</html>
 )
 

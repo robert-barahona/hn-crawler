@@ -12,6 +12,10 @@ used, how many entries it returned, how long it took, and whether it failed.
 Built with Next.js (App Router), TypeScript, `better-sqlite3` (plain SQL), Cheerio
 and Vitest.
 
+## Preview
+
+![Resume Chatbot Screenshot](preview.png)
+
 ## Requirements
 
 - **Node.js >= 22.13.0** (use the version in [`.nvmrc`](.nvmrc): `nvm use` / `fnm use`)
